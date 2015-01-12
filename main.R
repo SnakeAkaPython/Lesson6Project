@@ -1,12 +1,14 @@
 #Snake Aka Python
 #12 January 2015
 
+
+#Library calling
 library(sp)
 library(raster)
 library(rgdal)
 library(ggplot2)
 
-
+#Call the function
 source('R/extracting.R')
 
 
@@ -14,6 +16,7 @@ download.file(url = "https://github.com/GeoScripting-WUR/VectorRaster/raw/gh-pag
 unzip('data/MODIS.zip', exdir = 'data')
 
 
+#Get the data for municipalities
 nlCity <- getData('GADM',country='NLD', level=3)
 
 
@@ -43,6 +46,22 @@ AugustNdvi <- extracting(August, nlCityUTM)
 AnnualNdvi <- extracting(Annual, nlCityUTM)
 
 
-spplot(JanuaryNdvi, zcol = 'January',add = TRUE, main = 'January NDVI')
-spplot(AugustNdvi, zcol = 'August', add = TRUE, main = 'August NDVI')
-spplot(AnnualNdvi, zcol ='layer', add = TRUE, main = 'Annual NDVI')
+#Convert to data frame
+JanuaryMax <- data.frame(JanuaryNdvi)
+AugustMax <- data.frame(AugustNdvi)
+AnnualMax <- data.frame(AnnualNdvi)
+
+
+#Selection of the Greener City in any occasion 
+GreenCityJanuary <- subset(JanuaryMax, JanuaryMax$January == max(JanuaryMax$January, na.rm = TRUE), select = c(NAME_2))
+#The Greener City for January is Littenseradiel
+GreenCityAugust <- subset(AugustMax, AugustMax$August == max(AugustMax$August, na.rm = TRUE), select = c(NAME_2))
+#The Greener City for August is Vorden
+GreenCityJAnnual <- subset(AnnualMax, AnnualMax$layer == max(AnnualMax$layer, na.rm = TRUE), select = c(NAME_2))
+#The Greener City for all the year is Graafstroom
+
+
+spplot(JanuaryNdvi, zcol = 'January', main = 'January NDVI')
+spplot(AugustNdvi, zcol = 'August', main = 'August NDVI')
+spplot(AnnualNdvi, zcol ='layer', main = 'Annual NDVI')
+
