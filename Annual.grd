@@ -1,0 +1,25 @@
+[general] 
+creator=R package 'raster' 
+created= 2015-01-12 15:15:24 
+[georeference] 
+nrows= 204 
+ncols= 210 
+xmin= 142700.316690598 
+ymin= 5605157.24455273 
+xmax= 531882.998574048 
+ymax= 5983220.42123952 
+projection= +proj=sinu +lon_0=0 +x_0=0 +y_0=0 +a=6371007.181 +b=6371007.181 +units=m +no_defs 
+[data] 
+datatype= FLT8S 
+byteorder= little 
+nbands= 12 
+bandorder= BIL 
+minvalue= -2000:-1973:-1841:-1728:-1616:-1743:-1950:-1863:-2000:-2000:-1979:-1894 
+maxvalue= 9126.75:9426:9946.5:9565:9650:9274:8906.5:9002:8723.66666666667:9727:8842:9847 
+nodatavalue= -1.7e+308 
+[legend] 
+legendtype=  
+values=  
+color=  
+[description] 
+layername= January:February:March:April:May:June:July:August:September:October:November:December 
